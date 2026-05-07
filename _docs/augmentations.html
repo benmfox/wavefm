@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Because this will help">
+
+<title>Augmentations – wavefm</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="Augmentations – wavefm">
+<meta property="og:description" content="Because this will help">
+<meta property="og:site_name" content="wavefm">
+<meta name="twitter:title" content="Augmentations – wavefm">
+<meta name="twitter:description" content="Because this will help">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">wavefm</span>
+    </a>
+  </div>
+        <div class="quarto-navbar-tools tools-end">
+</div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./augmentations.html">Augmentations</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">WaveFM</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bedside.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bedside</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pulse.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pulse</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./slumber.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Slumber</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./signal.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Signal</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./transformers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Transformers</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./utils.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Utility Functions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./train.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Train</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./loss.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Loss functions</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data_preprocessing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Preprocessing</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./augmentations.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Augmentations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./layers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Layers</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./heads.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">SSL, Fine Tuning, and Linear Probing Heads</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./jepa.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">JEPA For Time Series?</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./baselines.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Baselines</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./survival.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Survival</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./nested.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Nested Tensors are cool</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./patchtst.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Patch Time Series Transformer</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tokenizers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tokenizers</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#patching" id="toc-patching" class="nav-link active" data-scroll-target="#patching">Patching</a>
+  <ul class="collapse">
+  <li><a href="#create_patch3d" id="toc-create_patch3d" class="nav-link" data-scroll-target="#create_patch3d">create_patch3d</a></li>
+  <li><a href="#create_patch" id="toc-create_patch" class="nav-link" data-scroll-target="#create_patch">create_patch</a></li>
+  <li><a href="#create_patch3d-1" id="toc-create_patch3d-1" class="nav-link" data-scroll-target="#create_patch3d-1">create_patch3d</a></li>
+  <li><a href="#unpatch" id="toc-unpatch" class="nav-link" data-scroll-target="#unpatch">unpatch</a></li>
+  </ul></li>
+  <li><a href="#patch-masking" id="toc-patch-masking" class="nav-link" data-scroll-target="#patch-masking">Patch Masking</a>
+  <ul class="collapse">
+  <li><a href="#mask_patches_simple" id="toc-mask_patches_simple" class="nav-link" data-scroll-target="#mask_patches_simple">mask_patches_simple</a></li>
+  <li><a href="#random_masking" id="toc-random_masking" class="nav-link" data-scroll-target="#random_masking">random_masking</a></li>
+  </ul></li>
+  <li><a href="#value-augmentations" id="toc-value-augmentations" class="nav-link" data-scroll-target="#value-augmentations">Value Augmentations</a>
+  <ul class="collapse">
+  <li><a href="#jitter_augmentation" id="toc-jitter_augmentation" class="nav-link" data-scroll-target="#jitter_augmentation">jitter_augmentation</a></li>
+  <li><a href="#remove_values" id="toc-remove_values" class="nav-link" data-scroll-target="#remove_values">remove_values</a></li>
+  </ul></li>
+  <li><a href="#shuffle-augmentations" id="toc-shuffle-augmentations" class="nav-link" data-scroll-target="#shuffle-augmentations">Shuffle Augmentations</a>
+  <ul class="collapse">
+  <li><a href="#shuffle_dim" id="toc-shuffle_dim" class="nav-link" data-scroll-target="#shuffle_dim">shuffle_dim</a></li>
+  <li><a href="#reverse_sequence" id="toc-reverse_sequence" class="nav-link" data-scroll-target="#reverse_sequence">reverse_sequence</a></li>
+  <li><a href="#channel_masking" id="toc-channel_masking" class="nav-link" data-scroll-target="#channel_masking">channel_masking</a></li>
+  <li><a href="#random_crop" id="toc-random_crop" class="nav-link" data-scroll-target="#random_crop">random_crop</a></li>
+  </ul></li>
+  <li><a href="#transforms" id="toc-transforms" class="nav-link" data-scroll-target="#transforms">Transforms</a>
+  <ul class="collapse">
+  <li><a href="#intraclasscutmix1d" id="toc-intraclasscutmix1d" class="nav-link" data-scroll-target="#intraclasscutmix1d">IntraClassCutMix1d</a></li>
+  <li><a href="#intraclasscutmixbatch" id="toc-intraclasscutmixbatch" class="nav-link" data-scroll-target="#intraclasscutmixbatch">IntraClassCutMixBatch</a></li>
+  <li><a href="#mixupcallbacksequence" id="toc-mixupcallbacksequence" class="nav-link" data-scroll-target="#mixupcallbacksequence">MixupCallbackSequence</a></li>
+  <li><a href="#mixupcallbackclassification" id="toc-mixupcallbackclassification" class="nav-link" data-scroll-target="#mixupcallbackclassification">MixupCallbackClassification</a></li>
+  <li><a href="#mixuptimedemos" id="toc-mixuptimedemos" class="nav-link" data-scroll-target="#mixuptimedemos">MixupTimeDemos</a></li>
+  <li><a href="#mixuptimedemosnox" id="toc-mixuptimedemosnox" class="nav-link" data-scroll-target="#mixuptimedemosnox">MixupTimeDemosNoX</a></li>
+  <li><a href="#transformscallback" id="toc-transformscallback" class="nav-link" data-scroll-target="#transformscallback">TransformsCallback</a></li>
+  <li><a href="#mixuppretraincallback" id="toc-mixuppretraincallback" class="nav-link" data-scroll-target="#mixuppretraincallback">MixupPretrainCallback</a></li>
+  <li><a href="#variablechannelinput" id="toc-variablechannelinput" class="nav-link" data-scroll-target="#variablechannelinput">VariableChannelInput</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/benmfox/wavefm/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Augmentations</h1>
+</div>
+
+<div>
+  <div class="description">
+    Because this will help
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
+<section id="patching" class="level2">
+<h2 class="anchored" data-anchor-id="patching">Patching</h2>
+<hr>
+<section id="create_patch3d" class="level3">
+<h3 class="anchored" data-anchor-id="create_patch3d">create_patch3d</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_patch3d(</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    xb, frame_len, frame_stride, patch_len, patch_stride, constant_pad:<span class="bu">bool</span><span class="op">=</span><span class="va">False</span>, constant_pad_value:<span class="bu">int</span><span class="op">=</span><span class="dv">0</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>xb: [bs x n_vars x seq_len]</em></p>
+<hr>
+</section>
+<section id="create_patch" class="level3">
+<h3 class="anchored" data-anchor-id="create_patch">create_patch</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_patch(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    xb, patch_len, stride, constant_pad:<span class="bu">bool</span><span class="op">=</span><span class="va">False</span>, constant_pad_value:<span class="bu">int</span><span class="op">=</span><span class="dv">0</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>xb: [bs x n_vars x seq_len]</em> out: [bs x num_patch x n_vars x patch_len]</p>
+<div id="2b6b1494" class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>batch_size <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>n_vars <span class="op">=</span> <span class="dv">256</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>max_len <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create sequences of different lengths</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>seq_lens <span class="op">=</span> torch.randint(<span class="dv">50</span>, max_len, (batch_size,))</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create input tensors with different sequence lengths</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>x_list <span class="op">=</span> [torch.randn(n_vars, length) <span class="cf">for</span> length <span class="kw">in</span> seq_lens]</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>x_nested <span class="op">=</span> torch.nested.as_nested_tensor(x_list, layout<span class="op">=</span>torch.jagged)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># test seq_len &gt; patch len == stride </span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>xb <span class="op">=</span> create_patch(x_nested, patch_len<span class="op">=</span><span class="dv">10</span>, stride<span class="op">=</span><span class="dv">5</span>, constant_pad<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">#xb_rep = create_patch(x_nested, patch_len=500, stride=500, constant_pad=True)</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">#x_nested.shape, xb.shape, xb_rep.shape</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">#xb_rep_short = create_patch(x_short, patch_en=502, stride=500, replication_pad=False)b</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="aa802c6f" class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>batch_size <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>n_vars <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>max_len <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create sequences of different lengths</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>seq_lens <span class="op">=</span> torch.randint(<span class="dv">50</span>, max_len, (batch_size,))</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create input tensors with different sequence lengths</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>x_list <span class="op">=</span> [torch.randn(n_vars, length) <span class="cf">for</span> length <span class="kw">in</span> seq_lens]</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>x_nested <span class="op">=</span> torch.nested.as_nested_tensor(x_list, layout<span class="op">=</span>torch.jagged)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># test seq_len &gt; patch len == stride </span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>xb <span class="op">=</span> create_patch3d(x_nested, patch_len<span class="op">=</span><span class="dv">4</span>, patch_stride<span class="op">=</span><span class="dv">3</span>, frame_len<span class="op">=</span><span class="dv">9</span>, frame_stride<span class="op">=</span><span class="dv">9</span>, constant_pad<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">#xb_rep = create_patch(x_nested, patch_len=500, stride=500, constant_pad=True)</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">#x_nested.shape, xb.shape, xb_rep.shape</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">#xb_rep_short = create_patch(x_short, patch_en=502, stride=500, replication_pad=False)b</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="9853f7f2" class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.randn(<span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">100</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>xb <span class="op">=</span> create_patch(x, patch_len<span class="op">=</span><span class="dv">10</span>, stride<span class="op">=</span><span class="dv">10</span>, constant_pad<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>xb.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>torch.Size([1, 10, 7, 10])</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="create_patch3d-1" class="level3">
+<h3 class="anchored" data-anchor-id="create_patch3d-1">create_patch3d</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_patch3d(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    xb, frame_len, frame_stride, patch_len, patch_stride, constant_pad:<span class="bu">bool</span><span class="op">=</span><span class="va">False</span>, constant_pad_value:<span class="bu">int</span><span class="op">=</span><span class="dv">0</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>xb: [bs x n_vars x seq_len]</em></p>
+<hr>
+</section>
+<section id="unpatch" class="level3">
+<h3 class="anchored" data-anchor-id="unpatch">unpatch</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> unpatch(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    x, seq_len, remove_padding:<span class="bu">bool</span><span class="op">=</span><span class="va">True</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>x: [bs/None x patch_num x n_vars x patch_len]</em> returns x: [bs x n_vars x seq_len]</p>
+<div id="547fec8e" class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.randn(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">50</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># test seq_len &gt; patch len == stride </span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>xb <span class="op">=</span> create_patch(x, patch_len<span class="op">=</span><span class="dv">6</span>, stride<span class="op">=</span><span class="dv">6</span>, constant_pad<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>xb <span class="op">=</span> unpatch(xb, seq_len<span class="op">=</span><span class="dv">50</span>, remove_padding<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>xb.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>torch.Size([1, 1, 54])</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="patch-masking" class="level2">
+<h2 class="anchored" data-anchor-id="patch-masking">Patch Masking</h2>
+<hr>
+<section id="mask_patches_simple" class="level3">
+<h3 class="anchored" data-anchor-id="mask_patches_simple">mask_patches_simple</h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mask_patches_simple(</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    xb, mask_ratio</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>Function that masks patches using fixed ratio approach similar to random_masking</em></p>
+<p>xb: [bs x patch_num x n_vars x patch_len] or nested tensor Returns: x_masked: masked tensor with same shape as input mask: binary mask where 1 indicates masked positions (bs x patch_num x n_vars)</p>
+<hr>
+</section>
+<section id="random_masking" class="level3">
+<h3 class="anchored" data-anchor-id="random_masking">random_masking</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> random_masking(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    xb, mask_ratio</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e0919432" class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.randn(<span class="dv">50</span>,<span class="dv">16</span>,<span class="dv">7</span>,<span class="dv">50</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>mask_ratio <span class="op">=</span> <span class="fl">0.4</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>x_new <span class="op">=</span> mask_patches_simple(x,mask_ratio<span class="op">=</span>mask_ratio)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>x_new.shape, x.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>(torch.Size([50, 16, 7, 50]), torch.Size([50, 16, 7, 50]))</code></pre>
+</div>
+</div>
+<div id="5b39a228" class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>patch_len <span class="op">=</span> <span class="dv">750</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>d_model <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>n_vars <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>max_len <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>bs <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create sequences of different lengths</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>seq_lens <span class="op">=</span> torch.randint(<span class="dv">50</span>, max_len, (bs,))</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create input tensors with different sequence lengths</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>x_list <span class="op">=</span> [torch.randn(length, n_vars, patch_len) <span class="cf">for</span> length <span class="kw">in</span> seq_lens]</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>x_nested <span class="op">=</span> torch.nested.as_nested_tensor(x_list, layout<span class="op">=</span>torch.jagged)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> mask_patches_simple(x_nested, mask_ratio<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">0</span>].shape, x[<span class="dv">1</span>].shape, x_nested[<span class="dv">0</span>].shape, x_nested[<span class="dv">1</span>].shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>(torch.Size([70, 7, 750]),
+ torch.Size([52, 7, 750]),
+ torch.Size([70, 7, 750]),
+ torch.Size([52, 7, 750]))</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="value-augmentations" class="level2">
+<h2 class="anchored" data-anchor-id="value-augmentations">Value Augmentations</h2>
+<hr>
+<section id="jitter_augmentation" class="level3">
+<h3 class="anchored" data-anchor-id="jitter_augmentation">jitter_augmentation</h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> jitter_augmentation(</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    x, mask_ratio:<span class="bu">float</span><span class="op">=</span><span class="fl">0.05</span>, jitter_ratio:<span class="bu">float</span><span class="op">=</span><span class="fl">0.05</span>, p:<span class="bu">int</span><span class="op">=</span><span class="dv">1</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="remove_values" class="level3">
+<h3 class="anchored" data-anchor-id="remove_values">remove_values</h3>
+<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> remove_values(</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    x, mask_ratio</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ebfc1793" class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>patch_len <span class="op">=</span> <span class="dv">750</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>d_model <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>n_vars <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>max_len <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>bs <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create sequences of different lengths</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>seq_lens <span class="op">=</span> torch.randint(<span class="dv">50</span>, max_len, (bs,))</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create input tensors with different sequence lengths</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>x_list <span class="op">=</span> [torch.randn(n_vars, max_len) <span class="cf">for</span> length <span class="kw">in</span> seq_lens]</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>x_nested <span class="op">=</span> torch.nested.as_nested_tensor(x_list, layout<span class="op">=</span>torch.jagged)</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> jitter_augmentation(x_nested, mask_ratio<span class="op">=</span><span class="fl">0.9</span>, jitter_ratio<span class="op">=</span><span class="fl">0.05</span>)</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>x.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>torch.Size([3, 7, j8])</code></pre>
+</div>
+</div>
+<div id="4c10f669" class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">## note that the random number generator advances state...</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">42</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.randn(<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">1000</span>)</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">42</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>x_new, n_masks <span class="op">=</span> jitter_augmentation(x)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>n_masks <span class="op">/</span>(<span class="dv">4</span><span class="op">*</span> <span class="dv">7</span><span class="op">*</span><span class="dv">1000</span>)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>torch.manual_seed(<span class="dv">42</span>)</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>x_new2, n_masks2 <span class="op">=</span> jitter_augmentation(x)</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>torch.equal(x_new, x_new2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[18], line 7</span>
+<span class="ansi-green-fg ansi-bold">      4</span> x <span style="color:rgb(98,98,98)">=</span> torch<span style="color:rgb(98,98,98)">.</span>randn(<span style="color:rgb(98,98,98)">4</span>,<span style="color:rgb(98,98,98)">7</span>,<span style="color:rgb(98,98,98)">1000</span>)
+<span class="ansi-green-fg ansi-bold">      6</span> torch<span style="color:rgb(98,98,98)">.</span>manual_seed(<span style="color:rgb(98,98,98)">42</span>)
+<span class="ansi-green-fg">----&gt; 7</span> x_new, n_masks <span style="color:rgb(98,98,98)">=</span> jitter_augmentation(x)
+<span class="ansi-green-fg ansi-bold">      8</span> n_masks <span style="color:rgb(98,98,98)">/</span>(<span style="color:rgb(98,98,98)">4</span><span style="color:rgb(98,98,98)">*</span> <span style="color:rgb(98,98,98)">7</span><span style="color:rgb(98,98,98)">*</span><span style="color:rgb(98,98,98)">1000</span>)
+<span class="ansi-green-fg ansi-bold">     10</span> torch<span style="color:rgb(98,98,98)">.</span>manual_seed(<span style="color:rgb(98,98,98)">42</span>)
+
+<span class="ansi-red-fg">ValueError</span>: too many values to unpack (expected 2)</pre>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="shuffle-augmentations" class="level2">
+<h2 class="anchored" data-anchor-id="shuffle-augmentations">Shuffle Augmentations</h2>
+<hr>
+<section id="shuffle_dim" class="level3">
+<h3 class="anchored" data-anchor-id="shuffle_dim">shuffle_dim</h3>
+<div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> shuffle_dim(</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    x, dim:<span class="bu">int</span><span class="op">=</span><span class="dv">1</span>, p:<span class="bu">float</span><span class="op">=</span><span class="fl">0.5</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>shuffles a dimension randomly along dim</em> x: [bs x n channels x n patches x patch len]</p>
+<hr>
+</section>
+<section id="reverse_sequence" class="level3">
+<h3 class="anchored" data-anchor-id="reverse_sequence">reverse_sequence</h3>
+<div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> reverse_sequence(</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    x, seq_dim:<span class="bu">tuple</span><span class="op">=</span>(<span class="op">-</span><span class="dv">1</span>,), p:<span class="bu">float</span><span class="op">=</span><span class="fl">0.5</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cf8b82cb" class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.randn(<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">5</span>).to(<span class="st">'cuda'</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>torch.equal(shuffle_dim(x), x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>False</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="channel_masking" class="level3">
+<h3 class="anchored" data-anchor-id="channel_masking">channel_masking</h3>
+<div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> channel_masking(</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    x, dim:<span class="bu">int</span><span class="op">=</span><span class="dv">1</span>, p:<span class="bu">float</span><span class="op">=</span><span class="fl">0.5</span>, specific_channels:NoneType<span class="op">=</span><span class="va">None</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>Masks up to n channels - 1 randomly of x or specific channels if provided</em></p>
+<div id="262330ab" class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.randn(<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">5</span>,<span class="dv">5</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>x_new <span class="op">=</span> channel_masking(x, dim<span class="op">=</span><span class="dv">1</span>, p<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>patch_len <span class="op">=</span> <span class="dv">750</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>d_model <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>n_vars <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>max_len <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>bs <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create sequences of different lengths</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>seq_lens <span class="op">=</span> torch.randint(<span class="dv">50</span>, max_len, (bs,))</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create input tensors with different sequence lengths</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>x_list <span class="op">=</span> [torch.randn(n_vars, length) <span class="cf">for</span> length <span class="kw">in</span> seq_lens]</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>x_nested <span class="op">=</span> torch.nested.as_nested_tensor(x_list, layout<span class="op">=</span>torch.jagged)</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> channel_masking(x, dim<span class="op">=</span><span class="dv">1</span>, p<span class="op">=</span><span class="fl">1.5</span>, specific_channels<span class="op">=</span>[<span class="dv">0</span>,<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+</section>
+<section id="random_crop" class="level3">
+<h3 class="anchored" data-anchor-id="random_crop">random_crop</h3>
+<div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> random_crop(</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    x, c_in, min_len, p:<span class="bu">float</span><span class="op">=</span><span class="fl">0.5</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>Args:</em> x: Either a regular tensor [n_channels x seq_len] or a nested tensor with variable lengths Returns: Cropped version of input with random length</p>
+<div id="4ae72bc2" class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.randn(<span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">100</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x.shape)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> random_crop(x_nested, <span class="dv">7</span>, <span class="dv">10</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y.shape)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>[y_i.shape <span class="cf">for</span> y_i <span class="kw">in</span> y]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>torch.Size([1, 7, 100])
+torch.Size([3, 7, j1])</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>[torch.Size([7, 60]), torch.Size([7, 58]), torch.Size([7, 83])]</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="transforms" class="level2">
+<h2 class="anchored" data-anchor-id="transforms">Transforms</h2>
+<hr>
+<section id="intraclasscutmix1d" class="level3">
+<h3 class="anchored" data-anchor-id="intraclasscutmix1d">IntraClassCutMix1d</h3>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> IntraClassCutMix1d(</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    mix_prob:<span class="bu">float</span><span class="op">=</span><span class="fl">0.5</span>, <span class="co"># probability of applying cutmix</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    return_y_every_sec:<span class="bu">int</span><span class="op">=</span><span class="dv">30</span>, <span class="co"># length of segment to mix, if one value of y corresponds to 30 seconds of signal data, this should be set to 30.</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    frequency:<span class="bu">int</span><span class="op">=</span><span class="dv">125</span>, <span class="co"># frequency of the data</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>    ignore_index:<span class="bu">int</span><span class="op">=-</span><span class="dv">100</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>Intra-class CutMix for 1D data (e.g., time-series). </em></p>
+<p>This is a callback that can be used to apply CutMix to the training data. It is used to mix segments within the same class.</p>
+<div id="ebfed848" class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.randn(<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">90</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>x_c <span class="op">=</span> x.clone()</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> torch.randint(<span class="dv">0</span>, <span class="dv">5</span>, size<span class="op">=</span>(<span class="dv">4</span>,<span class="dv">90</span><span class="op">//</span><span class="dv">30</span>))</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>xxt <span class="op">=</span> IntraClassCutMix1d(mix_prob<span class="op">=</span><span class="dv">1</span>, frequency<span class="op">=</span><span class="dv">1</span>, return_y_every_sec<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>batch <span class="op">=</span> (x,y)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>batch <span class="op">=</span> xxt(batch)</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>torch.equal(x_c, batch[<span class="dv">0</span>]) <span class="op">==</span> <span class="va">False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>True</code></pre>
+</div>
+</div>
+<div id="517de91b" class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>n_vars <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>max_len <span class="op">=</span> <span class="dv">90</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>bs <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>frequnecy <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create sequences of different lengths</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>seq_lens <span class="op">=</span> torch.randint(<span class="dv">50</span>, max_len, (bs,))</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create input tensors with different sequence lengths</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>x_list <span class="op">=</span> [torch.randn(n_vars, length) <span class="cf">for</span> length <span class="kw">in</span> seq_lens]</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>x_nested <span class="op">=</span> torch.nested.as_nested_tensor(x_list, layout<span class="op">=</span>torch.jagged)</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>y_list <span class="op">=</span> [torch.randint(<span class="dv">0</span>, <span class="dv">5</span>, size<span class="op">=</span>(length,)) <span class="cf">for</span> length <span class="kw">in</span> seq_lens]</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>y_nested <span class="op">=</span> torch.nested.as_nested_tensor(y_list, layout<span class="op">=</span>torch.jagged)</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>xxt <span class="op">=</span> IntraClassCutMix1d(mix_prob<span class="op">=</span><span class="dv">1</span>, frequency<span class="op">=</span><span class="dv">1</span>, return_y_every_sec<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>batch <span class="op">=</span> (x_nested, y_nested)</span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>batch <span class="op">=</span> xxt(batch)</span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>batch[<span class="dv">0</span>], batch[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>(NestedTensor(size=(3, 4, j167), offsets=tensor([  0,  51, 135, 187]), contiguous=True),
+ NestedTensor(size=(3, j168), offsets=tensor([0, 2, 4, 6]), contiguous=True))</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="intraclasscutmixbatch" class="level3">
+<h3 class="anchored" data-anchor-id="intraclasscutmixbatch">IntraClassCutMixBatch</h3>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> IntraClassCutMixBatch(</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    mix_prob:<span class="bu">float</span><span class="op">=</span><span class="fl">0.5</span>, <span class="co"># probability of applying cutmix</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    return_y_every_sec:<span class="bu">int</span><span class="op">=</span><span class="dv">30</span>, <span class="co"># length of segment to mix, if one value of y corresponds to 30 seconds of signal data, this should be set to 30.</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    frequency:<span class="bu">int</span><span class="op">=</span><span class="dv">125</span>, <span class="co"># frequency of the data</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    ignore_index:<span class="bu">int</span><span class="op">=-</span><span class="dv">100</span>,</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    intra_class_only:<span class="bu">bool</span><span class="op">=</span><span class="va">True</span>, <span class="co"># whether to mix only within same class (True) or across all classes (False)</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>Intra-class CutMix for 1D data (e.g., time-series). </em></p>
+<p>This is a callback that can be used to apply CutMix to the training data. It is used to mix segments within the same class.</p>
+<p>This is different to IntraClassCutMix1d in that it mixes segments of the same class across batches of data, rather than just at the same segment</p>
+<div id="82e688c3" class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.randn(<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">90</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>x_c <span class="op">=</span> x.clone()</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> torch.randint(<span class="dv">0</span>, <span class="dv">5</span>, size<span class="op">=</span>(<span class="dv">4</span>,<span class="dv">90</span><span class="op">//</span><span class="dv">30</span>))</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>xxt <span class="op">=</span> IntraClassCutMixBatch(mix_prob<span class="op">=</span><span class="dv">1</span>, frequency<span class="op">=</span><span class="dv">1</span>, return_y_every_sec<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>batch <span class="op">=</span> [x,y]</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>batch <span class="op">=</span> xxt(batch)</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>torch.equal(x_c, batch[<span class="dv">0</span>]) <span class="op">==</span> <span class="va">False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="0e0f6015" class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>n_vars <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>max_len <span class="op">=</span> <span class="dv">90</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>bs <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>frequnecy <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create sequences of different lengths</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>seq_lens <span class="op">=</span> torch.randint(<span class="dv">50</span>, max_len, (bs,))</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create input tensors with different sequence lengths</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>x_list <span class="op">=</span> [torch.randn(n_vars, length) <span class="cf">for</span> length <span class="kw">in</span> seq_lens]</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>x_nested <span class="op">=</span> torch.nested.as_nested_tensor(x_list, layout<span class="op">=</span>torch.jagged)</span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>y_list <span class="op">=</span> [torch.randint(<span class="dv">0</span>, <span class="dv">5</span>, size<span class="op">=</span>(length,)) <span class="cf">for</span> length <span class="kw">in</span> seq_lens]</span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>y_nested <span class="op">=</span> torch.nested.as_nested_tensor(y_list, layout<span class="op">=</span>torch.jagged)</span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>xxt <span class="op">=</span> IntraClassCutMixBatch(mix_prob<span class="op">=</span><span class="dv">1</span>, frequency<span class="op">=</span><span class="dv">1</span>, return_y_every_sec<span class="op">=</span><span class="dv">30</span>)</span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>batch <span class="op">=</span> [x_nested, y_nested]</span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>batch <span class="op">=</span> xxt(batch)</span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>batch[<span class="dv">0</span>], batch[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+</section>
+<section id="mixupcallbacksequence" class="level3">
+<h3 class="anchored" data-anchor-id="mixupcallbacksequence">MixupCallbackSequence</h3>
+<div class="sourceCode" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> MixupCallbackSequence(</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    num_classes, return_y_every_sec:<span class="bu">int</span><span class="op">=</span><span class="dv">30</span>, frequency:NoneType<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    mixup_alpha:<span class="bu">float</span><span class="op">=</span><span class="fl">0.4</span>, <span class="co"># alpha parameter for the beta distribution</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>    ignore_index:<span class="bu">int</span><span class="op">=-</span><span class="dv">100</span>, <span class="co"># ignore index</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>Mixup for 1D data (e.g., time-series).</em></p>
+<p>This callback applies Mixup to the training data, blending both the input data and the labels.</p>
+<p>See tsai implementation here: https://github.com/timeseriesAI/tsai/blob/bdff96cc8c4c8ea55bc20d7cffd6a72e402f4cb2/tsai/data/mixed_augmentation.py#L43</p>
+<p>Note that this creates non-integer labels/soft labels. Loss functions should be able to handle this.</p>
+<div id="cae8c591" class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.randn(<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">90</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>x_c <span class="op">=</span> x.clone()</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>y_og <span class="op">=</span> torch.randint(<span class="dv">0</span>, <span class="dv">2</span>, size<span class="op">=</span>(<span class="dv">4</span>,<span class="dv">90</span><span class="op">//</span><span class="dv">30</span>))</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>y_og[<span class="dv">1</span>,<span class="dv">2</span>] <span class="op">=</span> <span class="op">-</span><span class="dv">100</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>y_og[<span class="dv">2</span>,<span class="dv">1</span>] <span class="op">=</span> <span class="op">-</span><span class="dv">100</span></span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>y_c <span class="op">=</span> y_og.clone()</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>xxt <span class="op">=</span> MixupCallbackSequence(num_classes<span class="op">=</span><span class="dv">2</span>, mixup_alpha<span class="op">=</span><span class="fl">0.4</span>)</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>batch <span class="op">=</span> (x,y_og)</span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>batch <span class="op">=</span> xxt(batch)</span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>torch.equal(x_c, batch[<span class="dv">0</span>]) <span class="op">==</span> <span class="va">False</span>, torch.equal(y_c, batch[<span class="dv">1</span>]) <span class="op">==</span> <span class="va">False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>(True, True)</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="mixupcallbackclassification" class="level3">
+<h3 class="anchored" data-anchor-id="mixupcallbackclassification">MixupCallbackClassification</h3>
+<div class="sourceCode" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> MixupCallbackClassification(</span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    num_classes, mixup_alpha:<span class="bu">float</span><span class="op">=</span><span class="fl">0.4</span>, <span class="co"># alpha parameter for the beta distribution</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    ignore_index:<span class="bu">int</span><span class="op">=-</span><span class="dv">100</span>, <span class="co"># ignore index</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>Mixup for 1D data (e.g., time-series).</em></p>
+<p>This callback applies Mixup to the training data, blending both the input data and the labels.</p>
+<p>See tsai implementation here: https://github.com/timeseriesAI/tsai/blob/bdff96cc8c4c8ea55bc20d7cffd6a72e402f4cb2/tsai/data/mixed_augmentation.py#L43</p>
+<p>Note that this creates non-integer labels/soft labels. Loss functions should be able to handle this.</p>
+<div id="75d91214" class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.randn(<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">90</span>)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>x_c <span class="op">=</span> x.clone()</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>y_og <span class="op">=</span> torch.randint(<span class="dv">0</span>, <span class="dv">2</span>, size<span class="op">=</span>(<span class="dv">4</span>,<span class="dv">2</span>))</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y_og, y_og.shape)</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>y_c <span class="op">=</span> y_og.clone()</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>xxt <span class="op">=</span> MixupCallbackClassification(num_classes<span class="op">=</span><span class="dv">2</span>, mixup_alpha<span class="op">=</span><span class="fl">0.4</span>)</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>batch <span class="op">=</span> (x,y_og)</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>batch <span class="op">=</span> xxt(batch)</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>torch.equal(x_c, batch[<span class="dv">0</span>]) <span class="op">==</span> <span class="va">False</span>, torch.equal(y_c, batch[<span class="dv">1</span>]) <span class="op">==</span> <span class="va">False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tensor([[0, 1],
+        [0, 0],
+        [0, 1],
+        [0, 1]]) torch.Size([4, 2])
+tensor([[0., 1.],
+        [0., 0.],
+        [0., 1.],
+        [0., 1.]]) tensor([[0., 1.],
+        [0., 0.],
+        [0., 1.],
+        [0., 1.]])</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>(True, False)</code></pre>
+</div>
+</div>
+<div id="5a9b7d6a" class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>n_vars <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>max_len <span class="op">=</span> <span class="dv">90</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>bs <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>frequnecy <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create sequences of different lengths</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>seq_lens <span class="op">=</span> torch.randint(<span class="dv">50</span>, max_len, (bs,))</span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create input tensors with different sequence lengths</span></span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>x_list <span class="op">=</span> [torch.randn(n_vars, length) <span class="cf">for</span> length <span class="kw">in</span> seq_lens]</span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>x_nested <span class="op">=</span> torch.nested.as_nested_tensor(x_list, layout<span class="op">=</span>torch.jagged)</span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a>y_list <span class="op">=</span> [torch.randint(<span class="dv">0</span>, <span class="dv">5</span>, size<span class="op">=</span>(length,)) <span class="cf">for</span> length <span class="kw">in</span> seq_lens]</span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>y_nested <span class="op">=</span> torch.nested.as_nested_tensor(y_list, layout<span class="op">=</span>torch.jagged)</span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a>batch <span class="op">=</span> [x_nested, y_nested]</span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a>xxt <span class="op">=</span> MixupCallbackSequence(num_classes<span class="op">=</span><span class="dv">5</span>, mixup_alpha<span class="op">=</span><span class="fl">0.4</span>, return_y_every_sec<span class="op">=</span><span class="dv">30</span>, frequency<span class="op">=</span>frequnecy)</span>
+<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a>batch <span class="op">=</span> [x_nested, y_nested]</span>
+<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a>batch <span class="op">=</span> xxt(batch)</span>
+<span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a>batch[<span class="dv">0</span>], batch[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>(NestedTensor(size=(3, 4, j173), offsets=tensor([  0,  63, 133, 204]), contiguous=True),
+ NestedTensor(size=(3, 5, j174), offsets=tensor([0, 2, 4, 6]), contiguous=True))</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="mixuptimedemos" class="level3">
+<h3 class="anchored" data-anchor-id="mixuptimedemos">MixupTimeDemos</h3>
+<div class="sourceCode" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> MixupTimeDemos(</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    mixup_alpha:<span class="bu">float</span><span class="op">=</span><span class="fl">0.4</span>, <span class="co"># alpha parameter for the beta distribution</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>    mix_time:<span class="bu">bool</span><span class="op">=</span><span class="va">False</span>, <span class="co"># whether to mix time to event</span></span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>    mix_demographics:<span class="bu">bool</span><span class="op">=</span><span class="va">False</span>, <span class="co"># whether to mix demographics</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>Mixup for 1D data and time to event data + demographics</em></p>
+<p>This callback applies Mixup to the training data, blending both the input data and the labels.</p>
+<p>See tsai implementation here: https://github.com/timeseriesAI/tsai/blob/bdff96cc8c4c8ea55bc20d7cffd6a72e402f4cb2/tsai/data/mixed_augmentation.py#L43</p>
+<p>Note that this creates non-integer labels/soft labels. Loss functions should be able to handle this.</p>
+<div id="3a83a3bc" class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.randn(<span class="dv">4</span>,<span class="dv">7</span>,<span class="dv">90</span>)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>x_c <span class="op">=</span> x.clone()</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>y_og <span class="op">=</span> torch.randint(<span class="dv">0</span>, <span class="dv">2</span>, (<span class="dv">4</span>,))</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>time_idx <span class="op">=</span> torch.randint(<span class="dv">0</span>, <span class="dv">18</span>, (<span class="dv">4</span>,)).<span class="bu">float</span>()</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>age_demographics <span class="op">=</span> torch.randint(<span class="dv">20</span>, <span class="dv">80</span>, (<span class="dv">4</span>,)).<span class="bu">float</span>()</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>gender_demographics <span class="op">=</span> torch.randint(<span class="dv">0</span>, <span class="dv">2</span>, (<span class="dv">4</span>,)).<span class="bu">float</span>()</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>demographics <span class="op">=</span> torch.stack([age_demographics, gender_demographics], dim<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(demographics, demographics.shape)</span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y_og, y_og.shape)</span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>y_c <span class="op">=</span> y_og.clone()</span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>xxt <span class="op">=</span> MixupTimeDemos(mixup_alpha<span class="op">=</span><span class="fl">0.4</span>)</span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>batch <span class="op">=</span> (x,y_og, time_idx, demographics)</span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a>batch <span class="op">=</span> xxt(batch)</span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>torch.equal(x_c, batch[<span class="dv">0</span>]) <span class="op">==</span> <span class="va">False</span>, torch.equal(y_c, batch[<span class="dv">1</span>]) <span class="op">==</span> <span class="va">False</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tensor([[45.,  1.],
+        [62.,  1.],
+        [32.,  0.],
+        [44.,  1.]]) torch.Size([4, 2])
+tensor([1, 0, 0, 1]) torch.Size([4])</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>(True, True)</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="mixuptimedemosnox" class="level3">
+<h3 class="anchored" data-anchor-id="mixuptimedemosnox">MixupTimeDemosNoX</h3>
+<div class="sourceCode" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> MixupTimeDemosNoX(</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>    mixup_alpha:<span class="bu">float</span><span class="op">=</span><span class="fl">0.4</span>, <span class="co"># alpha parameter for the beta distribution</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>    mix_time:<span class="bu">bool</span><span class="op">=</span><span class="va">False</span>, <span class="co"># whether to mix time to event</span></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>Mixup for 1D data and time to event data + demographics</em></p>
+<p>This callback applies Mixup to the training data, blending both the input data and the labels.</p>
+<p>See tsai implementation here: https://github.com/timeseriesAI/tsai/blob/bdff96cc8c4c8ea55bc20d7cffd6a72e402f4cb2/tsai/data/mixed_augmentation.py#L43</p>
+<p>Note that this creates non-integer labels/soft labels. Loss functions should be able to handle this.</p>
+<hr>
+</section>
+<section id="transformscallback" class="level3">
+<h3 class="anchored" data-anchor-id="transformscallback">TransformsCallback</h3>
+<div class="sourceCode" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> TransformsCallback(</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>    transforms</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>Applies a series of transforms to the input data, on train_batch_start.</em></p>
+<hr>
+</section>
+<section id="mixuppretraincallback" class="level3">
+<h3 class="anchored" data-anchor-id="mixuppretraincallback">MixupPretrainCallback</h3>
+<div class="sourceCode" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> MixupPretrainCallback(</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>    mixup_alpha:<span class="bu">float</span><span class="op">=</span><span class="fl">0.4</span>, <span class="co"># alpha parameter for the beta distribution</span></span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>Mixup for 1D data (e.g., time-series).</em></p>
+<p>This callback applies Mixup to the training data, blending both the input data</p>
+<p>See tsai implementation here: https://github.com/timeseriesAI/tsai/blob/bdff96cc8c4c8ea55bc20d7cffd6a72e402f4cb2/tsai/data/mixed_augmentation.py#L43</p>
+<hr>
+</section>
+<section id="variablechannelinput" class="level3">
+<h3 class="anchored" data-anchor-id="variablechannelinput">VariableChannelInput</h3>
+<div class="sourceCode" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> VariableChannelInput(</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>    indexes_to_add_channels, n_channels_expected, channel_dim:<span class="bu">int</span><span class="op">=</span><span class="dv">1</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>):</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>Randomly adds 0 channels at correct index to the input data to match the number of channels expected by the self supervised model.</em></p>
+<div id="7dcbfbc9" class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>callback <span class="op">=</span> VariableChannelInput(</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>    indexes_to_add_channels<span class="op">=</span>[<span class="dv">0</span>],  <span class="co"># Add channel at index 0</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>    n_channels_expected<span class="op">=</span><span class="dv">5</span>,        <span class="co"># Total channels expected</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>    channel_dim<span class="op">=</span><span class="dv">1</span>                 <span class="co"># Channel dimension</span></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> torch.randn(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">90</span>)</span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>x2 <span class="op">=</span> callback(x1)</span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>x1.shape, x2.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>(torch.Size([4, 4, 90]), torch.Size([4, 5, 90]))</code></pre>
+</div>
+</div>
+<div id="c9d3318c" class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>n_vars <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>max_len <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>bs <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create sequences of different lengths</span></span>
+<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a>seq_lens <span class="op">=</span> torch.randint(<span class="dv">50</span>, max_len, (bs,))</span>
+<span id="cb59-6"><a href="#cb59-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-7"><a href="#cb59-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create input tensors with different sequence lengths</span></span>
+<span id="cb59-8"><a href="#cb59-8" aria-hidden="true" tabindex="-1"></a>x_list <span class="op">=</span> [torch.randn(n_vars, length) <span class="cf">for</span> length <span class="kw">in</span> seq_lens]</span>
+<span id="cb59-9"><a href="#cb59-9" aria-hidden="true" tabindex="-1"></a>x_nested <span class="op">=</span> torch.nested.as_nested_tensor(x_list, layout<span class="op">=</span>torch.jagged)</span>
+<span id="cb59-10"><a href="#cb59-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-11"><a href="#cb59-11" aria-hidden="true" tabindex="-1"></a>callback <span class="op">=</span> VariableChannelInput(</span>
+<span id="cb59-12"><a href="#cb59-12" aria-hidden="true" tabindex="-1"></a>    indexes_to_add_channels<span class="op">=</span>[<span class="dv">0</span>],  <span class="co"># Add channel at index 0</span></span>
+<span id="cb59-13"><a href="#cb59-13" aria-hidden="true" tabindex="-1"></a>    n_channels_expected<span class="op">=</span><span class="dv">5</span>,        <span class="co"># Total channels expected</span></span>
+<span id="cb59-14"><a href="#cb59-14" aria-hidden="true" tabindex="-1"></a>    channel_dim<span class="op">=</span><span class="dv">1</span>                 <span class="co"># Channel dimension</span></span>
+<span id="cb59-15"><a href="#cb59-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb59-16"><a href="#cb59-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb59-17"><a href="#cb59-17" aria-hidden="true" tabindex="-1"></a>x_nested2 <span class="op">=</span> callback(x_nested)</span>
+<span id="cb59-18"><a href="#cb59-18" aria-hidden="true" tabindex="-1"></a>x_nested.shape, x_nested2.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>(torch.Size([3, 4, j1]), torch.Size([3, 5, j3]))</code></pre>
+</div>
+</div>
+<div id="ebbab6f9" class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>x_reversed <span class="op">=</span> callback.reverse(x_nested2)</span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>torch.equal(x_nested.to_padded_tensor(<span class="dv">0</span>), x_reversed.to_padded_tensor(<span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>True</code></pre>
+</div>
+</div>
+<div id="85b660bf" class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a simple dataset</span></span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> SimpleDataset(Dataset):</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, num_samples<span class="op">=</span><span class="dv">100</span>, seq_length<span class="op">=</span><span class="dv">90</span>, num_channels<span class="op">=</span><span class="dv">4</span>):</span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.data <span class="op">=</span> torch.randn(num_samples, num_channels, seq_length)  <span class="co"># [samples, channels, seq_len]</span></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.labels <span class="op">=</span> torch.randint(<span class="dv">0</span>, <span class="dv">5</span>, (num_samples,))  <span class="co"># Random labels 0-4</span></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__len__</span>(<span class="va">self</span>):</span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">len</span>(<span class="va">self</span>.data)</span>
+<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__getitem__</span>(<span class="va">self</span>, idx):</span>
+<span id="cb63-11"><a href="#cb63-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.data[idx], <span class="va">self</span>.labels[idx]</span>
+<span id="cb63-12"><a href="#cb63-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-13"><a href="#cb63-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Create dataset and dataloader</span></span>
+<span id="cb63-14"><a href="#cb63-14" aria-hidden="true" tabindex="-1"></a>dataset <span class="op">=</span> SimpleDataset()</span>
+<span id="cb63-15"><a href="#cb63-15" aria-hidden="true" tabindex="-1"></a>dataloader <span class="op">=</span> DataLoader(dataset, batch_size<span class="op">=</span><span class="dv">16</span>, shuffle<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb63-16"><a href="#cb63-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-17"><a href="#cb63-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Create callback instance</span></span>
+<span id="cb63-18"><a href="#cb63-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's say we want to add a zero channel at index 0, </span></span>
+<span id="cb63-19"><a href="#cb63-19" aria-hidden="true" tabindex="-1"></a><span class="co"># and our model expects 5 channels total (4 original + 1 added)</span></span>
+<span id="cb63-20"><a href="#cb63-20" aria-hidden="true" tabindex="-1"></a>callback <span class="op">=</span> VariableChannelInput(</span>
+<span id="cb63-21"><a href="#cb63-21" aria-hidden="true" tabindex="-1"></a>    indexes_to_add_channels<span class="op">=</span>[<span class="dv">0</span>],  <span class="co"># Add channel at index 0</span></span>
+<span id="cb63-22"><a href="#cb63-22" aria-hidden="true" tabindex="-1"></a>    n_channels_expected<span class="op">=</span><span class="dv">5</span>,        <span class="co"># Total channels expected</span></span>
+<span id="cb63-23"><a href="#cb63-23" aria-hidden="true" tabindex="-1"></a>    channel_dim<span class="op">=</span><span class="dv">1</span>                 <span class="co"># Channel dimension</span></span>
+<span id="cb63-24"><a href="#cb63-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb63-25"><a href="#cb63-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-26"><a href="#cb63-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Test the callback</span></span>
+<span id="cb63-27"><a href="#cb63-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> batch <span class="kw">in</span> dataloader:</span>
+<span id="cb63-28"><a href="#cb63-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Original batch shape:"</span>, batch[<span class="dv">0</span>].shape)  <span class="co"># Should be [16, 4, 90]</span></span>
+<span id="cb63-29"><a href="#cb63-29" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb63-30"><a href="#cb63-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Simulate what happens in Lightning</span></span>
+<span id="cb63-31"><a href="#cb63-31" aria-hidden="true" tabindex="-1"></a>    callback.on_train_batch_start(<span class="va">None</span>, <span class="va">None</span>, batch, <span class="dv">0</span>)</span>
+<span id="cb63-32"><a href="#cb63-32" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Modified batch shape:"</span>, batch[<span class="dv">0</span>].shape)  <span class="co"># Should be [16, 5, 90]</span></span>
+<span id="cb63-33"><a href="#cb63-33" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb63-34"><a href="#cb63-34" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check that the first channel is zeros</span></span>
+<span id="cb63-35"><a href="#cb63-35" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"First channel is all zeros:"</span>, torch.<span class="bu">all</span>(batch[<span class="dv">0</span>][:, <span class="dv">0</span>] <span class="op">==</span> <span class="dv">0</span>))</span>
+<span id="cb63-36"><a href="#cb63-36" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb63-37"><a href="#cb63-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span>  <span class="co"># Just test one batch</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Original batch shape: torch.Size([16, 4, 90])
+Modified batch shape: torch.Size([16, 5, 90])
+First channel is all zeros: tensor(True)</code></pre>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/benmfox\.github\.io\/wavefm");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/benmfox/wavefm/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

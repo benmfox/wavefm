@@ -1,0 +1,23 @@
+website:
+  sidebar:
+    contents:
+      - index.ipynb
+      - 00_bedside.ipynb
+      - 01_pulse.ipynb
+      - 02_slumber.ipynb
+      - 03_signal.ipynb
+      - 04_transformers.ipynb
+      - 05_utils.ipynb
+      - 06_train.ipynb
+      - 07_loss.ipynb
+      - 08_data_preprocessing.ipynb
+      - 09_augmentations.ipynb
+      - 10_layers.ipynb
+      - 11_heads.ipynb
+      - 12_jepa.ipynb
+      - 13_baselines.ipynb
+      - 14_survival.ipynb
+      - 15_explainability.ipynb
+      - 16_nested.ipynb
+      - 17_patchtst.ipynb
+      - 18_tokenizers.ipynb
